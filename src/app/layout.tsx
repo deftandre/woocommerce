@@ -1,7 +1,5 @@
+import './globals.css'
 import type { Metadata } from 'next'
-
-import StyledComponentsRegistry from '@/lib/registry'
-import { Providers } from './providers'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,11 +11,5 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <html lang="en">
-      <StyledComponentsRegistry>
-        <Providers>{children}</Providers>
-      </StyledComponentsRegistry>
-    </html>
-  )
+  return <html lang="en">{children}</html>
 }
