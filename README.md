@@ -3,6 +3,7 @@
 ## Description
 
 A Simple WooCommerce example made with NextJs + Tailwind
+Available at https://woocommerce-deftandre.vercel.app/
 
 - React WooCommerce Theme, using Decoupled Architecture in Next.js
 - Backend in WordPress
