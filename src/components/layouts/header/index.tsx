@@ -54,7 +54,7 @@ const Header = ({ header }: THeader) => {
                 {siteDescription ? <p>{siteDescription}</p> : null}
               </span>
             </div>
-            <div className="block lg:hidden">
+            <div className="ml-auto block lg:hidden">
               <button
                 onClick={() => setMenuVisibility(!isMenuVisible)}
                 className="flex items-center px-3 py-2 border rounded text-black border-black hover:text-black hover:border-black"
