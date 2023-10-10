@@ -1,9 +1,21 @@
+# WooCommerce
+
+## Description
+
+A Simple WooCommerce example made with NextJs + Tailwind
+
+- React WooCommerce Theme, using Decoupled Architecture in Next.js
+- Backend in WordPress
+- Front end in React.
+- Data is Fetched through REST API.
+
 ## What is inside?
 
 This project uses lot of stuff as:
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [NextJS](https://nextjs.org/)
+- [TailWind CSS](https://tailwindcss.com/)
 - [Jest](https://jestjs.io/)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 - [Storybook](https://storybook.js.org/)
@@ -13,7 +25,16 @@ This project uses lot of stuff as:
 
 ## Getting Started
 
-First, run the development server:
+1. (Required) Create a `.env` file taking reference from `.env-example` and update your WordPressSite URL.
+
+- `NEXT_PUBLIC_WORDPRESS_URL=https://example.com`
+- `NEXT_PUBLIC_IMAGES_DOMAIN=example.com` ( This will be your product images url domain)
+
+2. Add your `WC_CONSUMER_KEY` and `WC_CONSUMER_SECRET` to the `.env` by following [WooCommerce > Settings > Advanced > REST API](https://woocommerce.github.io/woocommerce-rest-api-docs/#authentication)
+
+3. Create the Header and Footer Menus In WordPress Dashboard and set them to HCMS Header menu and HCMS Footer Menu respectively.
+
+Than, run the development server:
 
 ```bash
 npm run dev
@@ -23,7 +44,7 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 ## Commands
 
