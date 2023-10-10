@@ -11,7 +11,7 @@ type SocialLink = {
   iconUrl?: string
 }
 
-export type FooterProps = {
+export type TFooter = {
   footer?: {
     copyrightText?: string
     footerMenuItems?: MenuItem[]

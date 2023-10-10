@@ -3,9 +3,9 @@ import Link from 'next/link'
 
 import { sanitize } from '@/utils/miscellaneous'
 import { getIconComponentByName } from '@/utils/icons-map'
-import { FooterProps, IconName } from './types'
+import { TFooter, IconName } from './types'
 
-const Footer = ({ footer }: FooterProps) => {
+const Footer = ({ footer }: TFooter) => {
   const {
     copyrightText,
     footerMenuItems,
@@ -33,9 +33,7 @@ const Footer = ({ footer }: FooterProps) => {
               <ul>
                 {footerMenuItems.map((menuItem) => (
                   <li key={menuItem?.ID}>
-                    <Link href={`/${menuItem?.pageSlug}` ?? '/'}>
-                      {menuItem?.title}
-                    </Link>
+                    <Link href={'/'}>{menuItem?.title}</Link>
                   </li>
                 ))}
               </ul>
@@ -52,7 +50,7 @@ const Footer = ({ footer }: FooterProps) => {
               <ul className="flex item-center">
                 {socialLinks.map((socialLink) => (
                   <li key={socialLink?.iconName} className="ml-4">
-                    <a
+                    <Link
                       href={socialLink?.iconUrl || '/'}
                       target="_blank"
                       title={socialLink?.iconName}
@@ -60,7 +58,7 @@ const Footer = ({ footer }: FooterProps) => {
                     >
                       {getIconComponentByName(socialLink?.iconName as IconName)}
                       <span className="sr-only">{socialLink?.iconName}</span>
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

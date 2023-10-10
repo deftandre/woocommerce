@@ -8,7 +8,7 @@ import { isEmpty } from 'lodash'
 import { BurgerIcon, TailwindIcon, Bag, User, Wishlist } from '../../icons'
 import { MenuItem } from '../footer/types'
 
-type HeaderProps = {
+type THeader = {
   header?: {
     headerMenuItems?: MenuItem[]
     siteDescription?: string
@@ -18,7 +18,7 @@ type HeaderProps = {
   }
 }
 
-const Header = ({ header }: HeaderProps) => {
+const Header = ({ header }: THeader) => {
   const { headerMenuItems, siteDescription, siteLogoUrl, siteTitle, favicon } =
     header || {}
 
@@ -72,7 +72,7 @@ const Header = ({ header }: HeaderProps) => {
                   ? headerMenuItems?.map((menuItem: MenuItem) => (
                       <Link
                         key={menuItem?.ID}
-                        href={`/${menuItem?.pageSlug}` ?? '/'}
+                        href={'/'}
                         className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-black mr-10"
                         dangerouslySetInnerHTML={{
                           __html: menuItem.title || ''
@@ -82,7 +82,7 @@ const Header = ({ header }: HeaderProps) => {
                   : null}
               </div>
               <div className="text-sm font-medium">
-                <a
+                <Link
                   href="#responsive-header"
                   className="flex mt-4 lg:inline-block lg:mt-0 text-black hover:text-black mr-10"
                 >
@@ -90,8 +90,8 @@ const Header = ({ header }: HeaderProps) => {
                     <User className="mr-1 lg:mr-0" />
                     Profile
                   </span>
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#responsive-header"
                   className="flex mt-4 lg:inline-block lg:mt-0 text-black hover:text-black mr-10"
                 >
@@ -99,16 +99,16 @@ const Header = ({ header }: HeaderProps) => {
                     <Wishlist className="mr-1 lg:mr-0" />
                     Wishlist
                   </span>
-                </a>
-                <a
+                </Link>
+                <Link
                   className="flex mt-4 lg:inline-block lg:mt-0 text-black hover:text-black mr-10"
-                  href="/cart/"
+                  href="#responsive-header"
                 >
                   <span className="flex flex-row items-center lg:flex-col">
                     <Bag className="mr-1 lg:mr-0" />
                     Bag
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

@@ -1,4 +1,4 @@
-export type ProductProps = {
+export type TProduct = {
   id: number
   name: string
   slug: string

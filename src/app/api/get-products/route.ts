@@ -1,5 +1,6 @@
 import WooCommerceRestApi from '@woocommerce/woocommerce-rest-api'
-import { ProductProps } from './types'
+import { TProduct } from './types'
+import { NextResponse } from 'next/server'
 
 const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL || ''
 const CONSUMER_KEY = process.env.WC_CONSUMER_KEY || ''
@@ -21,7 +22,11 @@ const api = new WooCommerceRestApi({
  * @return {Promise<void>}
  */
 export async function GET(req: Request) {
-  const responseData: { success: boolean; products?: ProductProps[] } = {
+  const responseData: {
+    success: boolean
+    products?: TProduct[]
+    error?: string
+  } = {
     success: false,
     products: []
   }
@@ -29,12 +34,19 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url)
   const perPage = searchParams.get('perPage')
 
-  const { data } = await api.get('products', {
-    per_page: perPage || 50
-  })
+  try {
+    const { data } = await api.get('products', {
+      per_page: perPage || 50
+    })
 
-  responseData.success = true
-  responseData.products = data
+    responseData.success = true
+    responseData.products = data
 
-  return Response.json(responseData, { status: 200 })
+    return NextResponse.json(responseData, { status: 200 })
+  } catch (error) {
+    const errorMessage = (error as Error).message
+    responseData.error = errorMessage
+
+    return NextResponse.json(responseData, { status: 500 })
+  }
 }
