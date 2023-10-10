@@ -6,7 +6,7 @@ import Products from '@/components/products'
 import { HEADER_FOOTER_ENDPOINT } from '@/utils/constants/endpoints'
 import { getProductsData } from '@/utils/products'
 
-export async function getHeaderFooter() {
+async function getHeaderFooter() {
   const { data } = await axios.get(HEADER_FOOTER_ENDPOINT)
 
   return data.data
